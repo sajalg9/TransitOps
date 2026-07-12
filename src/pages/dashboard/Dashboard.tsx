@@ -1,1 +1,1 @@
-export default function Dashboard() { return <div>Dashboard</div>; }
+export { default } from "@/components/dashboard/Dashboard";

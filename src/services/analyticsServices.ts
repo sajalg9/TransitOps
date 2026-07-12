@@ -1,3 +1,5 @@
+import { supabase } from "./supabaseClient";
+
 export async function fetchAnalytics() {
   const [{ data: vehicles }, { data: trips }, { data: fuelLogs }, { data: maintenanceLogs }, { data: expenses }] = await Promise.all([
     supabase.from("vehicles").select("*"),

@@ -1,8 +1,7 @@
-// src/pages/analytics/Analytics.tsx
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { KpiStrip } from "@/components/analytics/KpiStrip";
 import { RevenueChart } from "@/components/analytics/RevenueChart";
-import { TopCostliestVehicles } from "@/components/analytics/TopCostliestVehicles";
+import { TopCostliestVehicles } from "@/components/analytics/TopCostliestVehicle";
 import { CsvExportButton } from "@/components/shared/CsvExportButton";
 
 export default function Analytics() {

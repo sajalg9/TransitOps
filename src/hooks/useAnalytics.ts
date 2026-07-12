@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAnalytics } from "@/services/analyticsService";
+import { fetchAnalytics } from "@/services/analyticsServices";
 
 export function useAnalytics() {
   return useQuery({ queryKey: ["analytics"], queryFn: fetchAnalytics });

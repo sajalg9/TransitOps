@@ -1,16 +1,17 @@
 // src/services/analyticsService.ts (dashboard stats portion)
 import { supabase } from "./supabaseClient";
+import type { Driver, Trip, Vehicle } from "@/types/database";
 
 export async function fetchDashboardStats() {
   const [{ data: vehicles }, { data: drivers }, { data: trips }] = await Promise.all([
     supabase.from("vehicles").select("*"),
     supabase.from("drivers").select("*"),
-    supabase.from("trips").select("*, vehicle:vehicles(*), driver:drivers(*)").order("created_at", { ascending: false }).limit(5),
+    supabase.from("trips").select("*, vehicle:vehicles(*), driver:drivers(*)").order("created_at", { ascending: false }),
   ]);
 
-  const v = vehicles ?? [];
-  const d = drivers ?? [];
-  const t = trips ?? [];
+  const v = (vehicles ?? []) as Vehicle[];
+  const d = (drivers ?? []) as Driver[];
+  const t = (trips ?? []) as Trip[];
 
   const activeVehicles = v.filter((x) => x.status !== "retired").length;
   const availableVehicles = v.filter((x) => x.status === "available").length;
@@ -33,6 +34,8 @@ export async function fetchDashboardStats() {
     driversOnDuty,
     fleetUtilization: utilization,
     recentTrips: t,
+    vehicles: v,
+    trips: t,
     vehicleStatusBreakdown: { available: availableVehicles, on_trip: onTripVehicles, in_shop: inMaintenance, retired: retiredVehicles },
     totalVehicles: v.length,
   };

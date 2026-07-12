@@ -1,4 +1,3 @@
-// src/hooks/useTrips.ts
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchTrips, createTrip, dispatchTrip, completeTrip, cancelTrip } from "@/services/tripService";
 

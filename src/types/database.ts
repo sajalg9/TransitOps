@@ -85,3 +85,11 @@ export interface Expense {
   created_at: string;
   vehicle?: Vehicle;
 }
+// src/types/database.ts (append)
+export interface OrgSettings {
+  id: string;
+  depot_name: string;
+  currency: string;
+  distance_unit: string;
+  updated_at: string;
+}

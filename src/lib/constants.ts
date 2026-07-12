@@ -44,3 +44,15 @@ export const NAV_ITEMS = [
   { label: "Analytics", path: "/analytics", icon: "BarChart3" },
   { label: "Settings", path: "/settings", icon: "Settings" },
 ] as const;
+// src/lib/constants.ts (append)
+export const RBAC_MATRIX: Record<Role, Record<string, "full" | "view" | "none">> = {
+  fleet_manager:     { fleet: "full", drivers: "full", trips: "none", fuel_exp: "view", analytics: "full" },
+  dispatcher:        { fleet: "view", drivers: "none", trips: "full", fuel_exp: "none", analytics: "none" },
+  safety_officer:    { fleet: "none", drivers: "full", trips: "view", fuel_exp: "none", analytics: "none" },
+  financial_analyst: { fleet: "view", drivers: "none", trips: "none", fuel_exp: "full", analytics: "full" },
+};
+
+export const RBAC_MODULES = ["fleet", "drivers", "trips", "fuel_exp", "analytics"] as const;
+export const RBAC_MODULE_LABELS: Record<string, string> = {
+  fleet: "Fleet", drivers: "Drivers", trips: "Trips", fuel_exp: "Fuel/Exp", analytics: "Analytics",
+};
